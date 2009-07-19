@@ -1,0 +1,20 @@
+Copyright © 2009 Adam Cohen-Rose
+
+HandBrakeFolderAction is an Applescript Folder Action Script that will encode and compress mpg files using HandBrakeCLI (available from http://handbrake.fr/ ).
+
+To use it, move the app into your Folder Action Scripts directory (/Library/Scripts/Folder Action Scripts/). Then create directories with the names of the HandBrake built-in presets (e.g. Animation, Film, etc) somewhere useful on your disk and set their Folder Action to the new script.
+
+When you next move files into that directory, the script will use HandBrakeCLI to encode the files using the preset that is named after the directory name.
+
+The script will ask you where you want to store your encoded files the first time it runs. Subsequent runs will use the same directory. If you want to change the directory, run the application by itself whilst holding down the option key.
+
+Encoded files will be named according to the input files (i.e. myMovie.mpg will be output as myMovie.mkv, if the encoding format for that preset is set to mkv).
+
+A couple of things to be aware of:
+1. Since the HandBrake encoding can take a long time, the Applescript Runner will be busy for a while, so new Folder Actions will wait until the encoding is finished.
+2. The script does not check to see if it is overwriting encoded files. Name your input files carefully!
+
+Enjoy!
+
+Adam Cohen-Rose
+http://www.cohen-rose.org

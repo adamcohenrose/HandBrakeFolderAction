@@ -1,0 +1,1104 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf460
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red76\green78\blue78;\red41\green0\blue255;\red64\green128\blue0;
+\red0\green0\blue255;}
+\deftab480
+\pard\pardeftab480\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 --\cf2  Copyright \'a9 2009 Adam Cohen-Rose
+\f1 \cf0 \
+\
+
+\f0\b \cf3 property
+\f1\b0 \cf0  
+\f0 \cf4 HandBrakeCLIPath
+\f1 \cf0  
+\f0 :
+\f1  
+\f0 "/usr/local/bin/HandBrakeCLI"
+\f1 \
+
+\f0 --\cf2  property maxEncodingTimeInSeconds : 4 * 60 * 60
+\f1 \cf0 \
+
+\f0\b \cf3 property
+\f1\b0 \cf0  
+\f0 \cf4 outputDirectoryPath
+\f1 \cf0  
+\f0 :
+\f1  
+\f0 ""
+\f1 \
+\
+
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 findThisApp\cf0 ()
+\f1 \
+	
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "Finder"
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 myApp
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 application file
+\f1 \cf0  
+\f0 \cf5 id
+\f1 \cf0  
+\f0 "org.cohen-rose.HandBrakeFolderAction"
+\f1 \
+	
+\f0\b \cf3 return
+\f1\b0 \cf0  
+\f0 \cf4 myApp
+\f1 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf4 findThisApp
+\f1 \cf0 \
+\
+
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 findEncoderScriptPath
+\f1 \cf0  
+\f0 \cf5 from
+\f1 \cf0  
+\f0 \cf4 myApp
+\f1 \cf0 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 myPath
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 quoted form
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 POSIX path
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 (\cf4 myApp
+\f1 \cf0  
+\f0\b \cf3 as
+\f1\b0 \cf0  
+\f0 \cf5 string\cf0 )
+\f1 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 encoderScriptPath
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 myPath
+\f1 \cf0  
+\f0 &
+\f1  
+\f0 "/Contents/Resources/Scripts/encode_exported_eyetv.sh"
+\f1 \
+	
+\f0\b \cf3 return
+\f1\b0 \cf0  
+\f0 \cf4 encoderScriptPath
+\f1 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf4 findEncoderScriptPath
+\f1 \cf0 \
+\
+
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 registerWithGrowl\cf0 ()
+\f1 \
+	
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "Finder"
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+			
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 name
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf5 application file
+\f1 \cf0  
+\f0 \cf5 id
+\f1 \cf0  
+\f0 "com.Growl.GrowlHelperApp"
+\f1 \
+	
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0\b \cf3 error
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 return
+\f1\b0 \cf0  
+\f0 \cf5 missing value
+\f1 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+	\
+	
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0 \
+		
+\f0\b \cf3 using terms from
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "GrowlHelperApp"
+\f1 \
+			
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 notificationList
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \{"Encoding Finished"\}
+\f1 \
+			
+\f0 \cf5 register
+\f1 \cf0  
+\f0 \cf5 as application
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 "HandbrakeFolderAction"
+\f1  
+\f0 \cf5 all notifications
+\f1 \cf0  
+\f0 \cf4 notificationList
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 \cf5 default notifications
+\f1 \cf0  
+\f0 \cf4 notificationList
+\f1 \cf0 \
+			
+\f0\b \cf3 return
+\f1\b0 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 using terms from
+\f1\b0 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 tell
+\f1\b0 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf4 registerWithGrowl
+\f1 \cf0 \
+\
+
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0 \cf4 notifyEncodingFinished\cf0 (\cf4 growlHelperApp\cf0 ,
+\f1  
+\f0 \cf4 mytitle\cf0 ,
+\f1  
+\f0 \cf4 mydescription\cf0 )
+\f1 \
+	
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0 \
+		
+\f0\b \cf3 using terms from
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "GrowlHelperApp"
+\f1 \
+			
+\f0 \cf5 notify
+\f1 \cf0  
+\f0 \cf5 with name
+\f1 \cf0  
+\f0 "Encoding Finished"
+\f1  
+\f0 \cf5 title
+\f1 \cf0  
+\f0 \cf4 mytitle
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 \cf5 description
+\f1 \cf0  
+\f0 \cf4 mydescription
+\f1 \cf0  
+\f0 \cf5 application name
+\f1 \cf0  
+\f0 "HandbrakeFolderAction"
+\f1 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 using terms from
+\f1\b0 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 tell
+\f1\b0 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf4 notifyEncodingFinished
+\f1 \cf0 \
+\
+
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0 \cf4 chooseOutputDirectory\cf0 ()
+\f1 \
+	
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "System Events"
+\f1 \
+			
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0\b \cf3 not
+\f1\b0 \cf0  
+\f0 ((
+\b \cf3 some
+\f1\b0 \cf0  
+\f0 \cf5 process
+\f1 \cf0  
+\f0\b \cf3 whose
+\f1\b0 \cf0  
+\f0 \cf5 name
+\f1 \cf0  
+\f0\b \cf3 contains
+\f1\b0 \cf0  
+\f0 "KeyboardViewerServer")
+\f1  
+\f0 \cf5 exists\cf0 )
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+				
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "KeyboardViewerServer"
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 activate
+\f1 \cf0 \
+			
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 tell
+\f1\b0 \cf0 \
+	
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0\b \cf3 error
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "KeyboardViewerServer"
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 activate
+\f1 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+	\
+	
+\f0\b \cf3 tell
+\f1\b0 \cf0  
+\f0 \cf5 application
+\f1 \cf0  
+\f0 "System Events"
+\f1 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 optionKeyDown
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 (
+\b \cf3 get
+\f1\b0 \cf0  
+\f0 \cf5 value
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf5 checkbox
+\f1 \cf0  
+\f0 "
+\f2 \uc0\u8997 
+\f0 "
+\f1  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf5 window
+\f1 \cf0  
+\f0 1
+\f1  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf5 application process
+\f1 \cf0  
+\f0 "KeyboardViewerServer")
+\f1  
+\f0\b \cf3 as
+\f1\b0 \cf0  
+\f0 \cf5 boolean
+\f1 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 tell
+\f1\b0 \cf0 \
+	\
+	
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 outputDirectoryPath
+\f1 \cf0  
+\f0 =
+\f1  
+\f0 ""
+\f1  
+\f0\b \cf3 or
+\f1\b0 \cf0  
+\f0 \cf4 optionKeyDown\cf0 )
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 outputDirectoryPath
+\f1 \cf0  
+\f0 =
+\f1  
+\f0 "")
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 tempOutputFolder
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 (\cf5 path to
+\f1 \cf0  
+\f0 \cf5 movies folder\cf0 )
+\f1 \
+		
+\f0\b \cf3 else
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 tempOutputFolder
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 (\cf5 POSIX file
+\f1 \cf0  
+\f0 \cf4 outputDirectoryPath\cf0 )
+\f1 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 outputFolder
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 \cf5 choose folder
+\f1 \cf0  
+\f0 \cf5 with prompt
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+					
+\f0 "Where do you want your movies to be exported?"
+\f1  
+\f0 \cf5 default location
+\f1 \cf0  
+\f0 \cf4 tempOutputFolder
+\f1 \cf0 \
+		
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0\b \cf3 error
+\f1\b0 \cf0  
+\f0 \cf5 number
+\f1 \cf0  
+\f0 -128
+\f1 \
+			
+\f0 \cf5 display alert
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 "Cannot continue without export folder"
+\f1  
+\f0 \cf5 as
+\f1 \cf0  
+\f0 \cf5 critical
+\f1 \cf0  
+\f0 \cf5 buttons
+\f1 \cf0  
+\f0 \{"Quit"\}
+\f1  
+\f0 \cf5 default button
+\f1 \cf0  
+\f0 "Quit"
+\f1 \
+			
+\f0\b \cf3 return
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 outputDirectoryPath
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 quoted form
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 POSIX path
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 outputFolder
+\f1 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf4 chooseOutputDirectory
+\f1 \cf0 \
+\
+
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0 \cf5 run
+\f1 \cf0 \
+	
+\f0 \cf4 chooseOutputDirectory\cf0 ()
+\f1 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf5 run
+\f1 \cf0 \
+\
+
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0 \cf5 adding folder items to
+\f1 \cf0  
+\f0 \cf4 this_folder
+\f1 \cf0  
+\f0 \cf5 after receiving
+\f1 \cf0  
+\f0 \cf4 these_items
+\f1 \cf0 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 registerWithGrowl\cf0 ()
+\f1 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 myApp
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 findThisApp\cf0 ()
+\f1 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 encoderScriptPath
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf4 findEncoderScriptPath
+\f1 \cf0  
+\f0 \cf5 from
+\f1 \cf0  
+\f0 \cf4 myApp
+\f1 \cf0 \
+	
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 outputDirectoryPath
+\f1 \cf0  
+\f0 =
+\f1  
+\f0 "")
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+		
+\f0 \cf4 chooseOutputDirectory\cf0 ()
+\f1 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+	\
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 errors
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \{\}
+\f1 \
+	
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 results
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \{\}
+\f1 \
+	
+\f0\b \cf3 repeat
+\f1\b0 \cf0  
+\f0\b \cf3 with
+\f1\b0 \cf0  
+\f0 \cf4 i
+\f1 \cf0  
+\f0\b \cf3 from
+\f1\b0 \cf0  
+\f0 1
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 number
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf5 items
+\f1 \cf0  
+\f0\b \cf3 in
+\f1\b0 \cf0  
+\f0 \cf4 these_items
+\f1 \cf0 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 this_item
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 item
+\f1 \cf0  
+\f0 \cf4 i
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 these_items
+\f1 \cf0 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf4 item_path
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 quoted form
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 POSIX path
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 this_item
+\f1 \cf0 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 shellResult
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 missing value
+\f1 \cf0 \
+		
+\f0 --\cf2  with timeout of maxEncodingTimeInSeconds seconds
+\f1 \cf0 \
+		
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 shellResult
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 \cf5 do shell script
+\f1 \cf0  
+\f0 (\cf4 encoderScriptPath
+\f1 \cf0  
+\f0 &
+\f1  
+\f0 " "
+\f1  
+\f0 &
+\f1  
+\f0 \cf4 HandBrakeCLIPath
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+				
+\f0 &
+\f1  
+\f0 " "
+\f1  
+\f0 &
+\f1  
+\f0 \cf4 item_path
+\f1 \cf0  
+\f0 &
+\f1  
+\f0 " "
+\f1  
+\f0 &
+\f1  
+\f0 \cf4 outputDirectoryPath\cf0 )
+\f1 \
+		
+\f0\b \cf3 on
+\f1\b0 \cf0  
+\f0\b \cf3 error
+\f1\b0 \cf0  
+\f0 \cf4 errorMsg
+\f1 \cf0 \
+			
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 errorMsg
+\f1 \cf0  
+\f0 =
+\f1  
+\f0 "event timed out")
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+				
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 errorMsg
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 "Timed out while waiting for "
+\f1  
+\f0 &
+\f1  
+\f0 \cf4 item_path
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+					
+\f0 &
+\f1  
+\f0 " to be encoded. See latest log in ~/Library/Logs/HandBrakeFolderAction/ for results"
+\f1 \
+			
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 copy
+\f1\b0 \cf0  
+\f0 \cf4 errorMsg
+\f1 \cf0  
+\f0 &
+\f1  
+\f0 \cf5 return
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 errors
+\f1 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 try
+\f1\b0 \cf0 \
+		
+\f0 --\cf2  end timeout
+\f1 \cf0 \
+		
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 shellResult
+\f1 \cf0  
+\f0 \uc0\u8800 
+\f1  
+\f0 \cf5 missing value\cf0 )
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (\cf4 growlHelperApp
+\f1 \cf0  
+\f0 \uc0\u8800 
+\f1  
+\f0 \cf5 missing value\cf0 )
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+				
+\f0 \cf4 notifyEncodingFinished\cf0 (\cf4 growlHelperApp\cf0 ,
+\f1  
+\f0 "Finished encoding file",
+\f1  
+\f0 \cf4 shellResult\cf0 )
+\f1 \
+			
+\f0\b \cf3 else
+\f1\b0 \cf0 \
+				
+\f0\b \cf3 copy
+\f1\b0 \cf0  
+\f0 \cf4 shellResult
+\f1 \cf0  
+\f0 &
+\f1  
+\f0 \cf5 return
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 results
+\f1 \cf0 \
+			
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 repeat
+\f1\b0 \cf0 \
+	
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (
+\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 length
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 errors
+\f1 \cf0  
+\f0 >
+\f1  
+\f0 0)
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+		
+\f0\b \cf3 set
+\f1\b0 \cf0  
+\f0 \cf4 alertTitle
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0 ((\cf5 length
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 errors\cf0 )
+\f1  
+\f0 &
+\f1  
+\f0 " file(s) failed to export:")
+\f1  
+\f0\b \cf3 as
+\f1\b0 \cf0  
+\f0 \cf5 text
+\f1 \cf0 \
+		
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (
+\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 length
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 results
+\f1 \cf0  
+\f0 >
+\f1  
+\f0 0)
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+			
+\f0\b \cf3 copy
+\f1\b0 \cf0  
+\f0 \{"Logs:",
+\f1  
+\f0 \cf5 return\cf0 \}
+\f1  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 errors
+\f1 \cf0 \
+			
+\f0\b \cf3 copy
+\f1\b0 \cf0  
+\f0 \cf4 results
+\f1 \cf0  
+\f0\b \cf3 to
+\f1\b0 \cf0  
+\f0\b \cf3 the
+\f1\b0 \cf0  
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 errors
+\f1 \cf0 \
+		
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+		
+\f0 \cf5 display alert
+\f1 \cf0  
+\f0 \cf4 alertTitle
+\f1 \cf0  
+\f0 \cf5 message
+\f1 \cf0  
+\f0 (\cf4 errors
+\f1 \cf0  
+\f0\b \cf3 as
+\f1\b0 \cf0  
+\f0 \cf5 text\cf0 )
+\f1 \
+	
+\f0\b \cf3 else
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0  
+\f0 (
+\b \cf3 the
+\f1\b0 \cf0  
+\f0 \cf5 length
+\f1 \cf0  
+\f0\b \cf3 of
+\f1\b0 \cf0  
+\f0 \cf4 results
+\f1 \cf0  
+\f0 >
+\f1  
+\f0 0
+\f1  
+\f0\b \cf3 and
+\f1\b0 \cf0  
+\f0 \cf4 growlHelperApp
+\f1 \cf0  
+\f0 =
+\f1  
+\f0 \cf5 missing value\cf0 )
+\f1  
+\f0\b \cf3 then
+\f1\b0 \cf0 \
+		
+\f0 \cf5 display dialog
+\f1 \cf0  
+\f0 \cf4 results
+\f1 \cf0  
+\f0\b \cf3 as
+\f1\b0 \cf0  
+\f0 \cf5 text
+\f1 \cf0  
+\f0 \cf5 with title
+\f1 \cf0  
+\f0 \'ac
+\f1 \
+			
+\f0 "Encoding finished"
+\f1  
+\f0 \cf5 buttons
+\f1 \cf0  
+\f0 \{"OK"\}
+\f1  
+\f0 \cf5 default button
+\f1 \cf0  
+\f0 \{"OK"\}
+\f1  
+\f0 \cf5 giving up after
+\f1 \cf0  
+\f0 30
+\f1 \
+	
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0\b \cf3 if
+\f1\b0 \cf0 \
+
+\f0\b \cf3 end
+\f1\b0 \cf0  
+\f0 \cf5 adding folder items to
+\f1 \cf0 \
+}
